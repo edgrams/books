@@ -1,8 +1,0 @@
-def makeList(strings: String*) = {
-  if (strings.length == 0)
-    List.empty[Int]
-  else
-    strings.toList
-}
-
-val list: List[Any] = makeList()
