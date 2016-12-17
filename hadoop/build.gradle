@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://repository.cloudera.com/content/repositories/releases/"
+    }
+}
+
+dependencies {
+    compile group: 'org.apache.hadoop', name: 'hadoop-common', version: '2.7.3'
+    compile group: 'org.apache.hadoop', name: 'hadoop-core', version: '2.6.0-mr1-cdh5.9.0'
+}
