@@ -11,10 +11,11 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.apache.hadoop', name: 'hadoop-common', version: '2.7.3'
-    compile group: 'org.apache.hadoop', name: 'hadoop-core', version: '2.6.0-mr1-cdh5.9.0'
+    compile group: 'org.apache.hadoop', name: 'hadoop-client', version: '2.7.3'
     compile group: 'org.apache.hadoop', name: 'hadoop-minicluster', version: '2.7.3'
     compile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.mrunit', name: 'mrunit', version: '1.1.0', classifier: 'hadoop2'
+
 }
 
 jar {
