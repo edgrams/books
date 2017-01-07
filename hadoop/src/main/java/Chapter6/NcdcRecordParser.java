@@ -6,6 +6,7 @@ import org.apache.hadoop.io.Text;
  * Created by edgrams on 1/6/17.
  */
 public class NcdcRecordParser {
+    private static final int MALFORMED_TEMPERATURE = 1000;
     private static final int MISSING_TEMPERATURE = 9999;
 
     private String year;
@@ -29,8 +30,12 @@ public class NcdcRecordParser {
         parse(record.toString());
     }
 
+    public boolean isMalformedTemperature() { return airTemperature > MALFORMED_TEMPERATURE; }
+
     public boolean isValidTemperature() {
-        return airTemperature != MISSING_TEMPERATURE && quality.matches("[01459]");
+        return airTemperature < MALFORMED_TEMPERATURE &&
+                airTemperature != MISSING_TEMPERATURE &&
+                quality.matches("[01459]");
     }
 
     public String getYear() {

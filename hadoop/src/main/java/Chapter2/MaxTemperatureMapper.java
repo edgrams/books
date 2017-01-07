@@ -13,6 +13,10 @@ import java.io.IOException;
  */
 public class MaxTemperatureMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
+    public enum Temperature {
+        MALFORMED
+    }
+
     private NcdcRecordParser parser = new NcdcRecordParser();
 
     @Override
@@ -21,8 +25,11 @@ public class MaxTemperatureMapper extends Mapper<LongWritable, Text, Text, IntWr
 
         parser.parse(value);
         if (parser.isValidTemperature()) {
-            context.write(new Text(parser.getYear()),
-                    new IntWritable(parser.getAirTemperature()));
+            int airTemperature = parser.getAirTemperature();
+            context.write(new Text(parser.getYear()), new IntWritable(airTemperature));
+        } else if (parser.isMalformedTemperature()) {
+            System.err.println("Ignoring possibly corrupt input: " + value);
+            context.getCounter(Temperature.MALFORMED).increment(1);
         }
     }
 }
