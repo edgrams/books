@@ -9,11 +9,13 @@ public class NcdcRecordParser {
     private static final int MALFORMED_TEMPERATURE = 1000;
     private static final int MISSING_TEMPERATURE = 9999;
 
+    private String stationId;
     private String year;
     private int airTemperature;
     private String quality;
 
     public void parse(String record) {
+        stationId = record.substring(4, 10) + "-" + record.substring(10, 15);
         year = record.substring(15, 19);
         String airTemperatureString;
 
@@ -36,6 +38,10 @@ public class NcdcRecordParser {
         return airTemperature < MALFORMED_TEMPERATURE &&
                 airTemperature != MISSING_TEMPERATURE &&
                 quality.matches("[01459]");
+    }
+
+    public String getStationId() {
+        return stationId;
     }
 
     public String getYear() {
