@@ -34,6 +34,8 @@ public class NcdcRecordParser {
 
     public boolean isMalformedTemperature() { return airTemperature > MALFORMED_TEMPERATURE; }
 
+    public boolean isMissingTemperature() { return airTemperature == MISSING_TEMPERATURE; }
+
     public boolean isValidTemperature() {
         return airTemperature < MALFORMED_TEMPERATURE &&
                 airTemperature != MISSING_TEMPERATURE &&
@@ -42,6 +44,10 @@ public class NcdcRecordParser {
 
     public String getStationId() {
         return stationId;
+    }
+
+    public String getQuality() {
+        return quality;
     }
 
     public String getYear() {
