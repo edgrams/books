@@ -57,4 +57,6 @@ public class NcdcRecordParser {
     public int getAirTemperature() {
         return airTemperature;
     }
+
+    public int getYearInt() { return Integer.parseInt(year); }
 }
