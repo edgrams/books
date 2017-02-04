@@ -36,7 +36,7 @@ public class AvroGenericMaxTemperature extends Configured implements Tool {
                     "\"fields\": [" +
                     "{\"name\": \"year\", \"type\": \"int\"}," +
                     "{\"name\": \"temperature\", \"type\": \"int\"}," +
-                    "{\"name\": \"stationId\", \"type\": \"string\"}," +
+                    "{\"name\": \"stationId\", \"type\": \"string\"}" +
                     "]" +
                     "}"
     );
